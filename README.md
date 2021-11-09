@@ -14,6 +14,8 @@ npm install elr-scss-modal-alerts --save
 yarn add elr-scss-modal-alerts
 ```
 
+This package contains styles only. It's up to you to wire up the JavaScript. This allows these styles to be used with any JavaScript framework. Or no framework at all!
+
 ## License
 
 SEE LICENSE IN LICENSE.md

@@ -28,7 +28,7 @@
       <div class="demo-content">
         <h2 class="subheading">Confirmation Action</h2>
         <button data-alertid="js-alert-1" class="js-show-alert">Alert Me</button>
-        <dialog id="js-alert-1" class="dialog-blackout">
+        <dialog role="alert" id="js-alert-1" class="dialog-blackout">
           <div class="modal-alert">
             <header class="elr-modal-alert-header">
               <span class="elr-modal-alert-icon">
@@ -57,7 +57,7 @@
       <div class="demo-content">
         <h2 class="subheading">Single Action</h2>
         <button data-alertid="js-alert-2" class="js-show-alert">Alert Me</button>
-        <dialog id="js-alert-2" class="dialog-blackout">
+        <dialog role="alert" id="js-alert-2" class="dialog-blackout">
           <div class="modal-alert">
             <header class="elr-modal-alert-header">
               <h2 class="elr-modal-alert-heading">This Is an Alert!</h2>
@@ -84,7 +84,13 @@
     for (const dialog of dialogs) {
       dialog.addEventListener('click', () => {
         dialog.setAttribute('open', false);
-      }); 
+      });
+      dialog.addEventListener('keyup', (e) => {
+        console.log(e.keyCode);
+        if (e.keyCode == '27') {
+          dialog.setAttribute('open', false);
+        }
+      });
     }
 
     for (const button of buttons) {
@@ -119,7 +125,7 @@
         buttonCancel.addEventListener('click', () => {
           const alertId = buttonCancel.attributes['data-alertid'].nodeValue;
           const dialog = document.getElementById(alertId);
-          
+
           console.log('cancel action');
           dialog.setAttribute('open', false);
         });
