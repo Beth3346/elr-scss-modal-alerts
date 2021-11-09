@@ -1,2 +1,108 @@
 @import "elr-scss-functions/src/main";
-@import "src/modals-alert";
+@import "elr-scss-helpers/src/main";
+
+// @import "src/modals-alert";
+@include elr-button-classes;
+@include elr-buttons-action;
+
+@mixin elr-dialog($config: ()) {
+  background-color: rgba(#fff, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+
+  &[open="true"] {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@mixin elr-modal-alert($config: ()) {
+  overflow: hidden;
+  position: relative;
+  top: 10%;
+  width: 500px;
+  max-width: 90%;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4), 0 -1px 5px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  // border: 1px solid #eee;
+  background-color: #dfecf9;
+
+  .elr-modal-alert-header {
+    padding: 12px 24px 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+    // border-bottom: 1px solid #eee;
+  }
+
+  .elr-modal-alert-icon {
+    margin-right: 12px;
+    position: absolute;
+    right: -92px;
+    top: -20px;
+
+    i {
+      font-size: 260px;
+      color: #1976d2;
+      opacity: 0.6;
+    }
+  }
+
+  .elr-modal-alert-heading {
+    font-size: 30px;
+    font-weight: 900;
+    color: #1976d2;
+    padding: 0;
+    margin: 0;
+  }
+
+  .elr-modal-alert-content {
+    padding: 0 24px 24px;
+    border-bottom: 1px solid #eee;
+
+    p {
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      max-width: 65%;
+    }
+  }
+
+  .elr-modal-alert-footer {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(#1976d2, 0.3);
+  }
+
+  menu {
+    padding: 16px;
+    display: flex;
+    justify-content: flex-start;
+
+    .elr-button {
+      min-width: 0;
+      padding: 12px;
+      font-size: 14px;
+      // flex: 1;
+      // box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4), 0 -1px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .elr-button:first-child {
+      margin-right: 8px;
+    }
+
+    .elr-button:last-child {
+      margin-left: 8px;
+    }
+  }
+}

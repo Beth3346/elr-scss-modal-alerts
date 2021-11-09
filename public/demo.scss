@@ -1,0 +1,9 @@
+@import "src/main";
+
+.dialog-blackout {
+  @include elr-dialog;
+}
+
+.modal-alert {
+  @include elr-modal-alert;
+}

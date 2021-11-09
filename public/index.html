@@ -3,20 +3,20 @@
 <!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js">
+<html lang="en-US" class="no-js">
 <!--<![endif]-->
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Animated Icons Demo | ELR CSS Utilities</title>
+  <title>Modal Alert Demo | ELR CSS Utilities</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
     integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="./css/animated-icons.css">
+  <link rel="stylesheet" href="./css/demo.css">
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
@@ -24,27 +24,108 @@
   <!--[if lt IE 7]> <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p> <![endif]-->
   <div class="wrapper">
     <div class="content-holder">
-      <h1>Animated Icons</h1>
-      <div class="icon-animated icon-border">
-        <i class="fa fa-phone"></i>
+      <h1 class="main-heading">Modal Alerts</h1>
+      <div class="demo-content">
+        <h2 class="subheading">Confirmation Action</h2>
+        <button data-alertid="js-alert-1" class="js-show-alert">Alert Me</button>
+        <dialog id="js-alert-1" class="dialog-blackout">
+          <div class="modal-alert">
+            <header class="elr-modal-alert-header">
+              <span class="elr-modal-alert-icon">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+              </span>
+              <h2 class="elr-modal-alert-heading">This Is an Alert!</h2>
+            </header>
+            <div class="elr-modal-alert-content">
+              <p>Are you sure you want to continue? This will delete all of your data and your account.</p>
+            </div>
+            <footer class="elr-modal-alert-footer">
+              <menu>
+                <button
+                  data-alertid="js-alert-1"
+                  class="elr-button js-button-confirm"
+                >Confirm</button>
+                <button
+                  data-alertid="js-alert-1"
+                  class="elr-button elr-button-ghost js-button-cancel"
+                >Cancel</button>
+              </menu>
+            </footer>
+          </div>
+        </dialog>
       </div>
-      <div class="icon-animated icon-border-pop">
-        <i class="fa fa-phone"></i>
-      </div>
-      <div class="icon-animated icon-border-pull">
-        <i class="fa fa-phone"></i>
-      </div>
-      <div class="icon-animated icon-background-fade">
-        <i class="fa fa-phone"></i>
-      </div>
-      <div class="icon-animated icon-dash">
-        <i class="fa fa-phone"></i>
-      </div>
-      <div class="icon-animated icon-dash-rotate">
-        <i class="fa fa-phone"></i>
+      <div class="demo-content">
+        <h2 class="subheading">Single Action</h2>
+        <button data-alertid="js-alert-2" class="js-show-alert">Alert Me</button>
+        <dialog id="js-alert-2" class="dialog-blackout">
+          <div class="modal-alert">
+            <header class="elr-modal-alert-header">
+              <h2 class="elr-modal-alert-heading">This Is an Alert!</h2>
+            </header>
+            <div class="elr-modal-alert-content">
+              <p>Your requested action is complete.</p>
+            </div>
+            <menu>
+              <button
+                data-alertid="js-alert-2"
+                class="elr-button js-button-confirm"
+              >Confirm</button>
+            </menu>
+          </div>
+        </dialog>
       </div>
     </div>
   </div>
+  <script>
+    const buttons = document.getElementsByClassName('js-show-alert');
+    const modals = document.getElementsByClassName('modal-alert');
+    const dialogs = document.getElementsByTagName('dialog');
+
+    for (const dialog of dialogs) {
+      dialog.addEventListener('click', () => {
+        dialog.setAttribute('open', false);
+      }); 
+    }
+
+    for (const button of buttons) {
+      button.addEventListener('click', (e) => {
+        const alertId = button.attributes['data-alertid'].nodeValue;
+        const dialog = document.getElementById(alertId);
+
+        dialog.setAttribute('open', true);
+      }); 
+    }
+
+    for (const modal of modals) {
+      modal.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+      const buttonConfirm = modal.getElementsByClassName('js-button-confirm')[0];
+      const buttonCancel = modal.getElementsByClassName('js-button-cancel')[0];
+
+      console.log({buttonConfirm})
+
+      if (buttonConfirm) {
+        buttonConfirm.addEventListener('click', () => {
+          const alertId = buttonConfirm.attributes['data-alertid'].nodeValue;
+          const dialog = document.getElementById(alertId);
+          
+          console.log('confirm action');
+          dialog.setAttribute('open', false);
+        });
+      }
+
+      if (buttonCancel) {
+        buttonCancel.addEventListener('click', () => {
+          const alertId = buttonCancel.attributes['data-alertid'].nodeValue;
+          const dialog = document.getElementById(alertId);
+          
+          console.log('cancel action');
+          dialog.setAttribute('open', false);
+        });
+      }
+    }
+  </script>
 </body>
 
 </html>
