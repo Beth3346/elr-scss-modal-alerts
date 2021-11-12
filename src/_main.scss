@@ -1,10 +1,10 @@
 @import "elr-scss-functions/src/main";
 @import "elr-scss-helpers/src/main";
 
-// @import "src/modals-alert";
 @include elr-button-classes;
 @include elr-buttons-action;
 
+// replace with elr-dialog from `elr-scss-modals`
 @mixin elr-dialog($config: ()) {
   background-color: rgba(#fff, 0.7);
   position: fixed;
