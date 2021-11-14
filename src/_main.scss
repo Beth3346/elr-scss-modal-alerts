@@ -6,7 +6,7 @@
 
 // replace with elr-dialog from `elr-scss-modals`
 @mixin elr-dialog($config: ()) {
-  background-color: rgba(#fff, 0.7);
+  background-color: rgba(#fff, 0.8);
   position: fixed;
   top: 0;
   left: 0;
@@ -23,6 +23,21 @@
   &[open="true"] {
     opacity: 1;
     visibility: visible;
+  }
+
+  .elr-button-close {
+    color: $accent-color;
+    font-size: 32px;
+    font-weight: 900;
+    position: absolute;
+    right: 24px;
+    top: 16px;
+    border: 0;
+    box-shadow: none;
+    background: none;
+    padding: 4px 8px;
+    line-height: 1;
+    cursor: pointer;
   }
 }
 
