@@ -1,4 +1,5 @@
 @import "elr-scss-functions/src/main";
+@import "elr-scss-config/src/main";
 @import "elr-scss-helpers/src/main";
 
 @include elr-button-classes;
@@ -27,15 +28,15 @@
 
   .elr-button-close {
     color: $accent-color;
-    font-size: 32px;
+    font-size: $base-fontsize * 2;
     font-weight: 900;
     position: absolute;
-    right: 24px;
-    top: 16px;
+    right: ($base-fontsize * 1.5);
+    top: $base-fontsize;
     border: 0;
     box-shadow: none;
     background: none;
-    padding: 4px 8px;
+    padding: $base-fontsize * 0.25 ($base-fontsize * 0.5);
     line-height: 1;
     cursor: pointer;
   }
@@ -47,13 +48,13 @@
   top: 10%;
   width: 500px;
   max-width: 90%;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4), 0 -1px 5px rgba(0, 0, 0, 0.4);
-  border-radius: 5px;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
   // border: 1px solid #eee;
   background-color: #dfecf9;
 
   .elr-modal-alert-header {
-    padding: 12px 24px 0;
+    padding: ($base-fontsize * 0.75) ($base-fontsize * 1.5);
     display: flex;
     align-items: center;
     position: relative;
@@ -61,34 +62,34 @@
   }
 
   .elr-modal-alert-icon {
-    margin-right: 12px;
+    margin-right: ($base-fontsize * 0.75);
     position: absolute;
     right: -92px;
     top: -20px;
 
     i {
       font-size: 260px;
-      color: #1976d2;
+      color: $primary-color;
       opacity: 0.6;
     }
   }
 
   .elr-modal-alert-heading {
-    font-size: 30px;
+    font-size: ($base-fontsize * 1.5);
     font-weight: 900;
-    color: #1976d2;
+    color: $primary-color;
     padding: 0;
     margin: 0;
   }
 
   .elr-modal-alert-content {
-    padding: 0 24px 24px;
-    border-bottom: 1px solid #eee;
+    padding: 0 ($base-fontsize * 1.5) ($base-fontsize * 1.5);
+    border-bottom: $border;
 
     p {
       margin: 0;
       padding: 0;
-      font-size: 16px;
+      font-size: $base-fontsize;
       max-width: 65%;
     }
   }
@@ -96,28 +97,28 @@
   .elr-modal-alert-footer {
     position: relative;
     z-index: 1;
-    background-color: rgba(#1976d2, 0.3);
+    background-color: rgba($primary-color, 0.3);
   }
 
   menu {
-    padding: 16px;
+    padding: $base-fontsize;
     display: flex;
     justify-content: flex-start;
 
     .elr-button {
       min-width: 0;
-      padding: 12px;
-      font-size: 14px;
+      padding: ($base-fontsize * 0.75);
+      font-size: ($base-fontsize * 0.875);
       // flex: 1;
       // box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4), 0 -1px 4px rgba(0, 0, 0, 0.4);
     }
 
     .elr-button:first-child {
-      margin-right: 8px;
+      margin-right: ($base-fontsize * 0.5);
     }
 
     .elr-button:last-child {
-      margin-left: 8px;
+      margin-left: ($base-fontsize * 0.5);
     }
   }
 }
